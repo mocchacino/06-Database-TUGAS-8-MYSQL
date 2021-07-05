@@ -1,0 +1,38 @@
+1.	select kota, kec, luas, penduduk from tugas_populasi;
+
+2.	select kota from tugas_populasi;
+	alter table tugas_populasi
+    	change kota nama_kota varchar(50),
+    	change kec jumlah_kecamatan tinyint(3) unsigned,
+    	change kel jumlah_kelurahan smallint(5) unsigned
+    	;
+
+	atau
+
+	select kota as `Nama Kota`, kec as `Jumlah Kecamatan`, kel as `Jumlah Kelurahan` from tugas_populasi
+    -	;
+
+3.	select * from tugas_populasi
+    	order by kec desc;
+
+4.	select * from tugas_populasi
+    	order by kel
+    	limit 1,5;
+
+5.	select * from tugas_populasi
+    	where kota = 'Depok';
+
+6.	select prov, ibukota as kota, penduduk from tugas_daftar_provinsi
+    	join tugas_populasi
+    	on tugas_populasi.kota = tugas_daftar_provinsi.ibukota
+    	;
+
+	atau
+
+	select prov, kota, penduduk
+    	from tugas_populasi, tugas_daftar_provinsi
+    	where tugas_populasi.kota = tugas_daftar_provinsi.ibukota
+	;
+7.	select * from tugas_populasi
+    	where kec between 20 and 30
+	;
